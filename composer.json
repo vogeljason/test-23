@@ -1,0 +1,8 @@
+{
+  "name": "totallywicked/test-23",
+  "description": "The Totally Wicked PHP developer test",
+  "type": "project",
+  "require": {},
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
