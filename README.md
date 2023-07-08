@@ -1,4 +1,4 @@
-This test was conducted using Laravel 10.10 as the framework. The key files
+This test was conducted using Laravel 10.10 as the framework and php 8.2. The key files
 are 
 
  - routes/web.php - determines new url routes
@@ -10,9 +10,12 @@ rendering content
 
 I used a bitnami Laravel image for ease of setup on local development environment
 This can be found here https://hub.docker.com/r/bitnami/laravel/
-If not using the bitnami Laravel image then you will need to do composer install from the projet root to get the Laravel framework files
-and then do the normal setup for a Laravel application. Once setup, the main page
-can be accessed at <project-url>/characterslist. This displays the main page
+The normal setup for a Laravel application will be needed 
+
+ - composer install
+ - php artisan serve
+
+Once setup, the main page can be accessed at <project-url>/characterslist. This displays the main page
 with a list of the first page of Rick and Morty characters from the API. Pagination 
 is available to browse through the other pages. The page has filters to filter by criteria and a search input
 to search for a character by name. 
