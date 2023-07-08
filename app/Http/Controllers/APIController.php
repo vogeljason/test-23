@@ -21,11 +21,23 @@ class APIController extends Controller
      */
     private $characterUrl;
 
+    /**
+     * @var string[]
+     */
+    private $filterList;
 
     public function __construct()
     {
         $this->episodeUrl = env('API_URL') . 'episode';
         $this->characterUrl = env('API_URL') . 'character';
+        $this->filterList = ['alive',
+                            'dead',
+                            'human',
+                            'alien',
+                            'humanoid',
+                            'animal',
+                            'female',
+                            'male'];
     }
 
 
@@ -90,10 +102,17 @@ class APIController extends Controller
      */
     public function filterData(Request $request)
     {
-        foreach($request->input() as $key => $val) {
+        $inputVars = $request->input();
+        foreach($inputVars as $key => $val) {
             if($val != '') {
-                $filters[$key] = htmlspecialchars($val);
+                if($key != 'name' && in_array($val,$this->filterList)) {
+                    $filters[$key] = $val;
+                }
             }
+        }
+
+        if(isset($inputVars['name'])) {
+            $filters['name'] = htmlspecialchars($inputVars['name']);
         }
 
         if(!isset($filters['page']) || !is_numeric($filters['page'])) {

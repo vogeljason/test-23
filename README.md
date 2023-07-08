@@ -19,3 +19,10 @@ Once setup, the main page can be accessed at <project-url>/characterslist. This 
 with a list of the first page of Rick and Morty characters from the API. Pagination 
 is available to browse through the other pages. The page has filters to filter by criteria and a search input
 to search for a character by name. 
+
+Security Risks
+
+Since the filtering is done with url params there is a risk that malicious values can be sent.
+This has been mitigated checking the value against a hardcoded set of values for the filters.
+This can be improved by saving values to the database or modifying the API to allow for a call
+to get a list of values for character traits like origin, species etc.
